@@ -1,0 +1,2 @@
+include versioneer.py
+include demuxEM/_version.py
