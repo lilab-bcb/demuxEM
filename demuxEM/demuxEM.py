@@ -9,8 +9,6 @@ from sklearn.cluster import KMeans
 from typing import List
 from anndata import AnnData
 
-from demuxEM.utils import decorators as pg_deco
-
 
 def estimate_background_probs(adt: AnnData, random_state: int = 0):
     """For cell-hashing data, estimate antibody background probability using EM algorithm.
@@ -142,7 +140,6 @@ def remove_suffix(assigns: List[str]) -> List[str]:
     return pd.Categorical(results, categories=natsorted(np.unique(results)))
 
 
-@pg_deco.TimeLogger()
 def demultiplex(
     data: AnnData,
     adt: AnnData,
