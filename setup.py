@@ -1,7 +1,6 @@
 import versioneer
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
-from Cython.Build import cythonize
 from codecs import open
 import os
 
@@ -11,9 +10,12 @@ with open(os.path.join(here, "README.rst"), encoding="utf-8") as f:
     long_description = f.read()
 
 requires = [
+    "docopt",
     "numpy",
     "pandas",
     "scipy",
+    "scikit-learn",
+    "seaborn",
     "pegasusio"
 ]
 
@@ -45,7 +47,6 @@ setup(
     ],
     keywords="demultiplexing cell/nucleus hashing single-cell data",
     packages=find_packages(),
-    setup_requires=["Cython"],
     install_requires=requires,
     python_requires="~=3.5",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
