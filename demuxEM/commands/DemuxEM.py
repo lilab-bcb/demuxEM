@@ -4,16 +4,16 @@ from demuxEM.pipeline import run_pipeline
 
 class DemuxEM(Base):
     """
-Run the demuxEM pipeline for cell-hashing/nucleus-hashing data.
+Run the DemuxEM pipeline for cell-hashing/nucleus-hashing data.
 
 Usage:
-  demuxEM [options] <input_adt_csv_file> <input_raw_gene_bc_matrices_h5.h5> <output_name>
+  demuxEM [options] <input_raw_gene_bc_matrices_h5.h5> <input_hto_csv_file> <output_name>
   demuxEM -h | --help
-  pegasus -v | --version
+  demuxEM -v | --version
 
 Arguments:
-  input_adt_csv_file                      Input ADT (antibody tag) count matrix in CSV format.
   input_raw_gene_bc_matrices_h5.h5        Input raw RNA expression matrix in 10x hdf5 format.
+  input_hto_csv_file                      Input HTO (antibody tag) count matrix in CSV format.
   output_name                             Output name. All outputs will use it as the prefix.
 
 Options:
@@ -33,9 +33,8 @@ Options:
   -h, --help                                 Print out help information.
 
 Outputs:
-  output_name_demux.h5sc                                 RNA expression matrix with demultiplexed sample identities in pegasus HDF5 format.
-  output_name_ADTs.h5ad                                  Antibody tag matrix in h5ad format.
-  output_name_demux.h5ad                                 Demultiplexed RNA count matrix in h5ad format.
+  output_name_demux.zarr                                 RNA expression matrix with demultiplexed sample identities in Zarr format.
+  output_name.out.demuxEM.zarr                           DemuxEM-calculated results in Zarr format, containing two datasets, one for HTO and one for RNA.
   output_name.ambient_hashtag.hist.pdf                   Optional output. A histogram plot depicting hashtag distributions of empty droplets and non-empty droplets.
   output_name.background_probabilities.bar.pdf           Optional output. A bar plot visualizing the estimated hashtag background probability distribution.
   output_name.real_content.hist.pdf                      Optional output. A histogram plot depicting hashtag distributions of not-real-cells and real-cells as defined by total number of expressed genes in the RNA assay.
@@ -43,7 +42,7 @@ Outputs:
   output_name.gene_name.violin.pdf                       Optional outputs. Violin plots depicting gender-specific gene expression across samples. We can have multiple plots if a gene list is provided in '--generate-gender-plot' option.
 
 Examples:
-  demuxEM -p 8 --generate-diagnostic-plots sample_adt.csv sample_raw_gene_bc_matrices_h5.h5 sample_output
+  demuxEM -p 8 --generate-diagnostic-plots sample_raw_gene_bc_matrices_h5.h5 sample_hto.csv sample_output
     """
 
     def execute(self):
@@ -60,8 +59,8 @@ Examples:
         }
 
         run_pipeline(
-            self.args["<input_adt_csv_file>"],
             self.args["<input_raw_gene_bc_matrices_h5.h5>"],
+            self.args["<input_hto_csv_file>"],
             self.args["<output_name>"],
             **kwargs
         )

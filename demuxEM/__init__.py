@@ -1,13 +1,15 @@
-from .demuxEM import estimate_background_probs, demultiplex
-from .plot import (
-    plot_adt_hist,
-    plot_rna_hist,
-    plot_bar,
-    plot_violin,
-    plot_heatmap,
-    plot_dataframe_bar,
-)
-from .down_sampling import plot_down_sampling
+import sys
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
+from .tools import *
 
 from ._version import get_versions
 __version__ = get_versions()['version']
