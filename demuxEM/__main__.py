@@ -5,7 +5,7 @@ from .commands import demuxEM
 
 
 def main():
-    command = demuxEM(sys.argv, version = VERSION)
+    command = demuxEM(sys.argv[1:], version = VERSION)
     command.execute()
 
 

@@ -7,12 +7,12 @@ class DemuxEM(Base):
 Run the DemuxEM pipeline for cell-hashing/nucleus-hashing data.
 
 Usage:
-  demuxEM [options] <input_raw_gene_bc_matrices_h5.h5> <input_hto_csv_file> <output_name>
+  demuxEM [options] <input_raw_gene_bc_matrices_h5> <input_hto_csv_file> <output_name>
   demuxEM -h | --help
   demuxEM -v | --version
 
 Arguments:
-  input_raw_gene_bc_matrices_h5.h5        Input raw RNA expression matrix in 10x hdf5 format.
+  input_raw_gene_bc_matrices_h5           Input raw RNA expression matrix in 10x hdf5 format.
   input_hto_csv_file                      Input HTO (antibody tag) count matrix in CSV format.
   output_name                             Output name. All outputs will use it as the prefix.
 
@@ -42,7 +42,7 @@ Outputs:
   output_name.gene_name.violin.pdf                       Optional outputs. Violin plots depicting gender-specific gene expression across samples. We can have multiple plots if a gene list is provided in '--generate-gender-plot' option.
 
 Examples:
-  demuxEM -p 8 --generate-diagnostic-plots sample_raw_gene_bc_matrices_h5.h5 sample_hto.csv sample_output
+  demuxEM -p 8 --generate-diagnostic-plots sample_raw_gene_bc_matrices.h5 sample_hto.csv sample_output
     """
 
     def execute(self):
@@ -59,7 +59,7 @@ Examples:
         }
 
         run_pipeline(
-            self.args["<input_raw_gene_bc_matrices_h5.h5>"],
+            self.args["<input_raw_gene_bc_matrices_h5>"],
             self.args["<input_hto_csv_file>"],
             self.args["<output_name>"],
             **kwargs
