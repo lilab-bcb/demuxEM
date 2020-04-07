@@ -34,9 +34,9 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     rna_data._inplace_subset_obs(obs_index)
 
     # run demuxEM
-    demuxEM.estimate_background_probs(hashing_data, random_state=kwargs["random_state"])
+    estimate_background_probs(hashing_data, random_state=kwargs["random_state"])
 
-    demuxEM.demultiplex(
+    demultiplex(
         rna_data,
         hashing_data,
         min_signal=kwargs["min_signal"],
@@ -45,24 +45,24 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     )
 
     # annotate raw matrix with demuxEM results
-    demux_results = demuxEM.attach_demux_results(input_rna_file, rna_data)
+    demux_results = attach_demux_results(input_rna_file, rna_data)
 
     # generate plots
     if kwargs["gen_plots"]:
-        demuxEM.plot_hto_hist(
+        plot_hto_hist(
             hashing_data, "hto_type", output_name + ".ambient_hashtag.hist.pdf", alpha=1.0
         )
-        demuxEM.plot_bar(
+        plot_bar(
             hashing_data.uns["background_probs"],
             hashing_data.var_names,
             "Sample ID",
             "Background probability",
             output_name + ".background_probabilities.bar.pdf",
         )
-        demuxEM.plot_hto_hist(
+        plot_hto_hist(
             hashing_data, "rna_type", output_name + ".real_content.hist.pdf", alpha=0.5
         )
-        demuxEM.plot_rna_hist(rna_data, output_name + ".rna_demux.hist.pdf")
+        plot_rna_hist(rna_data, output_name + ".rna_demux.hist.pdf")
         logger.info("Diagnostic plots are generated.")
 
     if len(kwargs["gen_gender_plot"]) > 0:
@@ -73,7 +73,7 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
         rna_data.X.data = np.log1p(rna_data.X.data)
 
         for gene_name in kwargs["gen_gender_plot"]:
-            demuxEM.plot_gene_violin(
+            plot_gene_violin(
                 rna_data,
                 gene_name,
                 "{output_name}.{gene_name}.violin.pdf".format(
