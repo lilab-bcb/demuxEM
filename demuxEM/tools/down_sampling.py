@@ -37,20 +37,16 @@ def down_sampling(rna_gt: UnimodalData, hto_gt: UnimodalData, probs: List[float]
 
 
 def plot_down_sampling(
-    rna_file: str,
-    hto_file: str,
+    demuxEM_res_file: str, 
     out_file: str,
     probs: List[float] = [i / 10.0 for i in range(9, 0, -1)],
     n_threads: int = 1,
     dpi: int = 500,
     figsize: Tuple[float, float] = None,
 ):
-    rna_gt = read_input(rna_file, exptype="rna")
-    rna_gt.concat_data()
-    rna_gt = rna_gt._unidata
-
-    hto_gt = read_input(hto_file, genome="hashing", exptype="hashing")
-    hto_gt = hto_gt._unidata
+    data = read_input(demuxEM_res_file)
+    rna_gt = data.get_data(modality = "rna")
+    hto_gt = data.get_data(modality = "hashing")
 
     fracs, accuracy = down_sampling(rna_gt, hto_gt, probs, n_threads=n_threads)
 
