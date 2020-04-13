@@ -10,4 +10,4 @@ demuxEM for demultiplexing cell/nucleus hashing single-cell data
 
 demuxEM is the demultiplexing module of Pegasus.
 
-`Read documentation <http://pegasus.readthedocs.io>`__
+`Read documentation <http://demuxem.readthedocs.io>`__

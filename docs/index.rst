@@ -7,5 +7,4 @@
 
 
     installation
-    tutorial
     api/index
