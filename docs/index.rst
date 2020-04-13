@@ -8,3 +8,4 @@
 
     installation
     api/index
+    contact
