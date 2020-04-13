@@ -2,3 +2,5 @@ __pycache__
 build/
 dist/
 demuxEM.egg-info/
+docs/api/*.rst
+docs/_build
