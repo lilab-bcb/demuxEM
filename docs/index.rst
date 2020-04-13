@@ -7,5 +7,6 @@
 
 
     installation
+    usage
     api/index
     contact
