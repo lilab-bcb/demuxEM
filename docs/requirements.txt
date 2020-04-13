@@ -1,0 +1,4 @@
+sphinx>=2.0.1
+sphinx_rtd_theme>=0.3.1
+sphinx-autodoc-typehints
+pegasusio
