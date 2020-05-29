@@ -268,7 +268,7 @@ def attach_demux_results(input_rna_file: str, rna_data: UnimodalData) -> Multimo
     """
     demux_results = read_input(input_rna_file)
     # Assume all matrices are of the same dimension
-    assert demux_results.uns["experiment_type"] == "rna"
+    assert demux_results.uns["modality"] == "rna"
     barcodes = demux_results.obs_names
     idx = barcodes.isin(rna_data.obs_names)
     selected = barcodes[idx]
@@ -289,7 +289,7 @@ def attach_demux_results(input_rna_file: str, rna_data: UnimodalData) -> Multimo
 
     for keyword in demux_results.list_data():
         unidata = demux_results.get_data(keyword)
-        assert unidata.uns["experiment_type"] == "rna"
+        assert unidata.uns["modality"] == "rna"
         unidata.obs["demux_type"] = demux_type
         unidata.obs["assignment"] = assignment
         if assignment_dedup is not None:

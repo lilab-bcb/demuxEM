@@ -10,12 +10,12 @@ from demuxEM.tools import *
 
 def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     # load input rna data
-    data = io.read_input(input_rna_file, genome=kwargs["genome"], exptype="rna")
+    data = io.read_input(input_rna_file, genome=kwargs["genome"], modality="rna")
     data.concat_data() # in case of multi-organism mixing data
     rna_key = data.uns["genome"]
 
     # load input hashing data
-    data.update(io.read_input(input_hto_file, genome="hashing", exptype="hashing"))
+    data.update(io.read_input(input_hto_file, genome="hashing", modality="hashing"))
     hashing_key = "hashing"
 
     # Extract rna and hashing data
