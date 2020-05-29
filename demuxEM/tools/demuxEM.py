@@ -44,8 +44,15 @@ def estimate_background_probs(hashing_data: UnimodalData, random_state: int = 0)
 
     idx = np.isin(hashing_data.obs["hto_type"], "background")
     pvec = hashing_data.X[idx,].sum(axis=0).A1
-    hashing_data.uns["background_probs"] = pvec / pvec.sum()
+    back_probs = pvec / pvec.sum()
 
+    idx = back_probs <= 0.0
+    if idx.sum() > 0:
+        logger.warning(f"Detected {idx.sum()} antibody barcodes {','.join(hashing_data.var_names[idx])} with 0 counts in the background! These barcodes are likely not in the experiment and thus removed.")
+        hashing_data._inplace_subset_var(~idx)
+        back_probs = back_probs[~idx]
+
+    hashing_data.uns["background_probs"] = back_probs
     logger.info("Background probability distribution is estimated.")
 
 
@@ -54,6 +61,7 @@ def estimate_probs(arr: List[float], pvec: List[float], alpha: float, alpha_nois
     old_probs = np.zeros(pvec.size + 1)
     z = np.zeros(pvec.size + 1)
     noise = pvec.size
+
     # Estimate MLE without Generalized Dirichlet prior
     probs_mle = arr / arr.sum()
     probs[noise] = (probs_mle / pvec).min() + 0.01
@@ -192,6 +200,7 @@ def demultiplex(
     """
     nsample = hashing_data.shape[1]
     rna_data.uns["background_probs"] = hashing_data.uns["background_probs"]
+    assert (rna_data.uns["background_probs"] <= 0.0).sum() == 0
 
     idx_df = rna_data.obs_names.isin(hashing_data.obs_names)
     hashing_data.obs["rna_type"] = "background"
