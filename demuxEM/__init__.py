@@ -11,6 +11,10 @@ logger.addHandler(ch)
 
 from .tools import *
 
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
+from importlib_metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version(__name__)
+    del version
+except PackagteNotFoundError:
+    pass

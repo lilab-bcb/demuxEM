@@ -1,4 +1,3 @@
-import versioneer
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
 from codecs import open
@@ -21,8 +20,6 @@ requires = [
 
 setup(
     name="demuxEM",
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
     zip_safe=False,
     description="demuxEM is the demultiplexing module of Pegasus",
     long_description=long_description,
@@ -48,6 +45,7 @@ setup(
     keywords="demultiplexing cell/nucleus hashing single-cell data",
     packages=find_packages(),
     install_requires=requires,
+    setup_requires = ["setuptools_scm"],
     python_requires="~=3.5",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
 )
