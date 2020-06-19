@@ -2,7 +2,6 @@ sphinx>=2.0.1
 sphinx_rtd_theme>=0.3.1
 sphinx-autodoc-typehints
 scikit-learn>=0.21.3
-natsort
+matplotlib
 seaborn
-joblib
-Cython
+pegasusio
