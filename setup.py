@@ -20,6 +20,7 @@ requires = [
 
 setup(
     name="demuxEM",
+    use_scm_version=True,
     zip_safe=False,
     description="demuxEM is the demultiplexing module of Pegasus",
     long_description=long_description,
@@ -33,9 +34,9 @@ setup(
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Framework :: Jupyter",
         "Natural Language :: English",
         "Operating System :: MacOS :: MacOS X",
@@ -46,6 +47,6 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     setup_requires = ["setuptools_scm"],
-    python_requires="~=3.5",
+    python_requires="~=3.6",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
 )
