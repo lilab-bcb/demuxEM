@@ -15,7 +15,8 @@ requires = [
     "scipy",
     "scikit-learn",
     "seaborn",
-    "pegasusio"
+    "importlib-metadata",
+    "pegasusio",
 ]
 
 setup(
