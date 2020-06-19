@@ -34,9 +34,7 @@ setup(
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3 :: Only",
         "Framework :: Jupyter",
         "Natural Language :: English",
         "Operating System :: MacOS :: MacOS X",
@@ -47,6 +45,6 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     setup_requires = ["setuptools_scm"],
-    python_requires="~=3.6",
+    python_requires="~=3.5",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
 )
