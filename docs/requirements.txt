@@ -6,3 +6,4 @@ natsort
 seaborn
 joblib
 Cython
+pegasusio
