@@ -36,7 +36,7 @@ def estimate_background_probs(hashing_data: UnimodalData, random_state: int = 0)
     >>> demuxEM.estimate_background_probs(hashing_data)
     """
     hashing_data.obs["counts"] = hashing_data.X.sum(axis=1).A1
-    counts_log10 = np.log10(hashing_data.obs["counts"].values.reshape(-1, 1))
+    counts_log10 = np.log10(1 + hashing_data.obs["counts"].values.reshape(-1, 1))
     kmeans = KMeans(n_clusters=2, random_state=random_state).fit(counts_log10)
     signal = 0 if kmeans.cluster_centers_[0] > kmeans.cluster_centers_[1] else 1
     hashing_data.obs["hto_type"] = "background"

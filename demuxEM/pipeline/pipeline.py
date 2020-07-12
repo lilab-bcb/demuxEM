@@ -13,14 +13,16 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     data = io.read_input(input_rna_file, genome=kwargs["genome"], modality="rna")
     data.concat_data() # in case of multi-organism mixing data
     rna_key = data.uns["genome"]
+    rna_modality = "rna"
 
     # load input hashing data
-    data.update(io.read_input(input_hto_file, genome="hashing", modality="hashing"))
     hashing_key = "hashing"
+    hashing_modality = "hashing"
+    data.update(io.read_input(input_hto_file, genome=hashing_key, modality=hashing_modality))
 
     # Extract rna and hashing data
-    rna_data = data.get_data(rna_key)
-    hashing_data = data.get_data(hashing_key)
+    rna_data = data.get_data(f"{rna_key}-{rna_modality}")
+    hashing_data = data.get_data(f"{hashing_key}-{hashing_modality}")
 
     # Filter the RNA matrix
     rna_data.obs["n_genes"] = rna_data.X.getnnz(axis=1)
@@ -85,8 +87,8 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
         logger.info("Gender-specific gene expression violin plots are generated.")
 
     # output results
-    io.write_output(demux_results, output_name + "_demux.zarr", zarr_zipstore = True)
-    io.write_output(data, output_name + ".out.demuxEM.zarr", zarr_zipstore = True)
+    io.write_output(demux_results, output_name + "_demux.zarr")
+    io.write_output(data, output_name + ".out.demuxEM.zarr")
 
     # output summary statistics
     print("\nSummary statistics:")
