@@ -32,6 +32,11 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     )
     rna_data._inplace_subset_obs(obs_index)
 
+    # Filter the Hashing matrix
+    hashing_data.obs["n_counts"] = hashing_data.X.sum(axis=1).A1
+    obs_index = hashing_data.obs["n_counts"] >= 1
+    hashing_data._inplace_subset_obs(obs_index)
+
     # run demuxEM
     estimate_background_probs(hashing_data, random_state=kwargs["random_state"])
 
