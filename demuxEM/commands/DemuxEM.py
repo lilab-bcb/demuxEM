@@ -33,8 +33,8 @@ Options:
   -h, --help                                 Print out help information.
 
 Outputs:
-  output_name_demux.zarr                                 RNA expression matrix with demultiplexed sample identities in Zarr format.
-  output_name.out.demuxEM.zarr                           DemuxEM-calculated results in Zarr format, containing two datasets, one for HTO and one for RNA.
+  output_name_demux.zarr.zip                             RNA expression matrix with demultiplexed sample identities in Zarr format.
+  output_name.out.demuxEM.zarr.zip                       DemuxEM-calculated results in Zarr format, containing two datasets, one for HTO and one for RNA.
   output_name.ambient_hashtag.hist.pdf                   Optional output. A histogram plot depicting hashtag distributions of empty droplets and non-empty droplets.
   output_name.background_probabilities.bar.pdf           Optional output. A bar plot visualizing the estimated hashtag background probability distribution.
   output_name.real_content.hist.pdf                      Optional output. A histogram plot depicting hashtag distributions of not-real-cells and real-cells as defined by total number of expressed genes in the RNA assay.

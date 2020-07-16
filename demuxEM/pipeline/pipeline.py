@@ -84,8 +84,8 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
         logger.info("Gender-specific gene expression violin plots are generated.")
 
     # output results
-    io.write_output(demux_results, output_name + "_demux.zarr")
-    io.write_output(data, output_name + ".out.demuxEM.zarr")
+    io.write_output(demux_results, output_name + "_demux.zarr.zip")
+    io.write_output(data, output_name + ".out.demuxEM.zarr.zip")
 
     # output summary statistics
     print("\nSummary statistics:")
