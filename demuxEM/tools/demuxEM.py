@@ -33,7 +33,7 @@ def estimate_background_probs(hashing_data: UnimodalData, random_state: int = 0)
 
     Example
     -------
-    >>> demuxEM.estimate_background_probs(hashing_data)
+    >>> estimate_background_probs(hashing_data)
     """
     hashing_data.obs["counts"] = hashing_data.X.sum(axis=1).A1
     counts_log10 = np.log10(hashing_data.obs["counts"].values.reshape(-1, 1))
@@ -196,7 +196,7 @@ def demultiplex(
 
     Examples
     --------
-    >>> demuxEM.demultiplex(rna_data, hashing_data)
+    >>> demultiplex(rna_data, hashing_data)
     """
     nsample = hashing_data.shape[1]
     rna_data.uns["background_probs"] = hashing_data.uns["background_probs"]
@@ -264,7 +264,7 @@ def attach_demux_results(input_rna_file: str, rna_data: UnimodalData) -> Multimo
 
     Examples
     --------
-    >>> obj = demuxEM.attach_demux_results('raw_data.h5', rna_data)
+    >>> data = attach_demux_results('raw_data.h5', rna_data)
     """
     demux_results = read_input(input_rna_file)
     # Assume all matrices are of the same dimension
@@ -296,5 +296,5 @@ def attach_demux_results(input_rna_file: str, rna_data: UnimodalData) -> Multimo
             unidata.obs["assignment.dedup"] = assignment_dedup
 
     logger.info("Demultiplexing results are added to raw expression matrices.")
-    
+
     return demux_results
