@@ -61,7 +61,7 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
         plot_hto_hist(
             hashing_data, "rna_type", output_name + ".real_content.hist.pdf", alpha=0.5
         )
-        plot_rna_hist(rna_data, output_name + ".rna_demux.hist.pdf")
+        plot_rna_hist(rna_data, hashing_data, output_name + ".rna_demux.hist.pdf")
         logger.info("Diagnostic plots are generated.")
 
     if len(kwargs["gen_gender_plot"]) > 0:

@@ -38,7 +38,7 @@ Outputs:
   output_name.ambient_hashtag.hist.pdf                   Optional output. A histogram plot depicting hashtag distributions of empty droplets and non-empty droplets.
   output_name.background_probabilities.bar.pdf           Optional output. A bar plot visualizing the estimated hashtag background probability distribution.
   output_name.real_content.hist.pdf                      Optional output. A histogram plot depicting hashtag distributions of not-real-cells and real-cells as defined by total number of expressed genes in the RNA assay.
-  output_name.rna_demux.hist.pdf                         Optional output. A histogram plot depicting RNA UMI distribution for singlets, doublets and unknown cells.
+  output_name.rna_demux.hist.pdf                         Optional output. This figure consists of two plots. The first one is a horizontal bar plot depicting the percentage of RNA barcodes with at least one HTO count. The second plot is a histogram plot depicting RNA UMI distribution for singlets, doublets and unknown cells.
   output_name.gene_name.violin.pdf                       Optional outputs. Violin plots depicting gender-specific gene expression across samples. We can have multiple plots if a gene list is provided in '--generate-gender-plot' option.
 
 Examples:

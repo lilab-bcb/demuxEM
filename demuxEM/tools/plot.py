@@ -28,40 +28,56 @@ def plot_hto_hist(hashing_data: UnimodalData, attr: str, out_file: str, alpha: f
 
 
 def plot_rna_hist(
-    rna_data: UnimodalData, out_file: str, plot_attr: str = "n_counts", cat_attr: str = "demux_type", dpi: int = 500, figsize: Tuple[float, float] = None
+    rna_data: UnimodalData, hashing_data: UnimodalData, out_file: str, plot_attr: str = "n_counts", cat_attr: str = "demux_type", dpi: int = 500, figsize: Tuple[float, float] = None
 ) -> None:
+    fig, axes = plt.subplots(2, 1, gridspec_kw={'height_ratios': [1, 9], 'hspace': 0.6}, figsize = figsize, dpi = dpi)
+
+    # Percentage of RNA barcodes having HTO tags
+    nhto = rna_data.obs_names.isin(hashing_data.obs_names).sum()
+    total = rna_data.shape[0]
+
+    ax = axes[0]
+    p1 = nhto * 100.0 / total
+    p2 = (total - nhto) * 100.0 / total
+    labels = ['Has HTO', 'No HTO']
+    ax.barh(y = 0, width = p1, color = 'red', height = 0.5, label = labels[0])
+    ax.barh(y = 0, width = p2, left = p1, color = 'gray', height = 0.5, label = labels[1])
+    ax.set_yticks([])
+    ax.set_ylabel('RNA    \nbarcodes', rotation = 0, ha = 'right', va = 'center')
+    ax.set_xlim(left = 0, right = 100)
+    ax.set_xlabel('Percentage')
+    ax.legend(ncol=2, bbox_to_anchor=(1, 1), loc='lower right', fontsize = 'small')
+
+    # RNA histogram
     bins = np.logspace(
         np.log10(min(rna_data.obs[plot_attr])), np.log10(max(rna_data.obs[plot_attr])), 101
     )
     cat_vec = rna_data.obs[cat_attr]
-    ax = plt.gca()
-    if cat_attr == "demux_type":
-        ax.hist(
-            rna_data.obs.loc[np.isin(cat_vec, "singlet"), plot_attr],
-            bins,
-            alpha=0.5,
-            label="singlet",
-        )
-        ax.hist(
-            rna_data.obs.loc[np.isin(cat_vec, "doublet"), plot_attr],
-            bins,
-            alpha=0.5,
-            label="doublet",
-        )
-        ax.hist(
-            rna_data.obs.loc[np.isin(cat_vec, "unknown"), plot_attr],
-            bins,
-            alpha=0.5,
-            label="unknown",
-        )
+    ax = axes[1]
+    ax.hist(
+        rna_data.obs.loc[np.isin(cat_vec, "singlet"), plot_attr],
+        bins,
+        alpha=0.5,
+        label="singlet",
+    )
+    ax.hist(
+        rna_data.obs.loc[np.isin(cat_vec, "doublet"), plot_attr],
+        bins,
+        alpha=0.5,
+        label="doublet",
+    )
+    ax.hist(
+        rna_data.obs.loc[np.isin(cat_vec, "unknown"), plot_attr],
+        bins,
+        alpha=0.5,
+        label="unknown",
+    )
     ax.legend(loc="upper right")
     ax.set_xscale("log")
     ax.set_xlabel("Number of RNA UMIs (log10 scale)")
     ax.set_ylabel("Number of cellular barcodes")
-    if figsize is not None:
-        plt.gcf().set_size_inches(*figsize)
-    plt.savefig(out_file, dpi=dpi)
-    plt.close()
+
+    fig.savefig(out_file)
 
 
 def plot_bar(heights: List[float], tick_labels: List[str], xlabel: str, ylabel: str, out_file: str, dpi: int = 500, figsize: Tuple[float, float] = None) -> None:
