@@ -1,3 +1,8 @@
+Version 0.1.5 `September 16, 2020`
+----------------------------------
+
+Add barplot showing percentage of RNA barcodes with HTO counts.
+
 Version 0.1.4 `July 15, 2020`
 -------------------------------
 
