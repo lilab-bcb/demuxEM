@@ -11,7 +11,10 @@ logger.addHandler(ch)
 
 from .tools import *
 
-from importlib_metadata import version, PackageNotFoundError
+try:
+    from importlib.metadata import version, PackageNotFoundError
+except ImportError:  # < Python 3.8: Use backport module
+    from importlib_metadata import version, PackageNotFoundError
 
 try:
     __version__ = version(__name__)
