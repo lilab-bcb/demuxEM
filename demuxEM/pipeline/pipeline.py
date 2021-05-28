@@ -11,6 +11,7 @@ from demuxEM.tools import *
 def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     # load input rna data
     data = io.read_input(input_rna_file, genome=kwargs["genome"], modality="rna")
+    data.subset_data(modality_subset=['rna'])
     data.concat_data() # in case of multi-organism mixing data
     genome = data.uns["genome"]
 

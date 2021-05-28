@@ -1,3 +1,8 @@
+Version 0.1.6 `May 28, 2021`
+------------------------------
+
+Fix the bug when the input multi-modal object contains non-RNA modality data.
+
 Version 0.1.5 `September 16, 2020`
 ----------------------------------
 
