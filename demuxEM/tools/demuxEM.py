@@ -267,6 +267,7 @@ def attach_demux_results(input_rna_file: str, rna_data: UnimodalData) -> Multimo
     >>> data = attach_demux_results('raw_data.h5', rna_data)
     """
     demux_results = read_input(input_rna_file)
+    demux_results.subset_data(modality_subset=['rna'])
     # Assume all matrices are of the same dimension
     assert demux_results.uns["modality"] == "rna"
     barcodes = demux_results.obs_names

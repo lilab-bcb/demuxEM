@@ -23,15 +23,15 @@ import demuxEM
 # -- Project information -----------------------------------------------------
 
 project = "demuxEM"
-copyright = "2020 The Broad Institute, Inc. and The General Hospital Corporation. All rights reserved."
+copyright = "2020 - 2021 The Broad Institute, Inc. and The General Hospital Corporation. All rights reserved."
 author = (
     "Bo Li, Yiming Yang, and Josh Gould"
 )
 
 # The short X.Y version
-version = "0.1.0"
+version = "0.1"
 # The full version, including alpha/beta/rc tags
-release = "0.1.0"
+release = "0.1.6"
 
 
 # -- General configuration ---------------------------------------------------
@@ -209,5 +209,3 @@ texinfo_documents = [
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
-
-

@@ -13,7 +13,7 @@ Usage:
 
 Arguments:
   input_raw_gene_bc_matrices_h5           Input raw RNA expression matrix in 10x hdf5 format.
-  input_hto_csv_file                      Input HTO (antibody tag) count matrix in CSV format.
+  input_hto_csv_file                      Input HTO (antibody tag) count matrix in CSV format, with antibody names being rows and cell barcodes being columns. NOTICE: The first column (i.e. antibody names) MUST have a header name, usually "Antibody", to get correct demultiplexing results.
   output_name                             Output name. All outputs will use it as the prefix.
 
 Options:

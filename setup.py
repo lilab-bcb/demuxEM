@@ -16,7 +16,7 @@ requires = [
     "scikit-learn",
     "seaborn",
     "importlib-metadata >=0.7; python_version < '3.8'",
-    "pegasusio",
+    "pegasusio >=0.2.12",
 ]
 
 setup(
