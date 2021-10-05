@@ -28,6 +28,8 @@ def estimate_background_probs(hashing_data: UnimodalData, random_state: int = 0)
     -------
     ``None``
 
+    Update ``hashing_data``: Filtered cell barcodes with 0 counts
+
     Update ``hashing_data.uns``:
         * ``hashing_data.uns["background_probs"]``: estimated antibody background probability.
 
@@ -36,6 +38,14 @@ def estimate_background_probs(hashing_data: UnimodalData, random_state: int = 0)
     >>> estimate_background_probs(hashing_data)
     """
     hashing_data.obs["counts"] = hashing_data.X.sum(axis=1).A1
+    
+    # Remove barcodes with 0 total counts
+    idx = hashing_data.obs["counts"] == 0
+    ncell_zero = idx.sum()
+    if ncell_zero > 0:
+        logger.warning(f"Detected {ncell_zero} cell barcodes with 0 hashtag counts, which are removed from the hashing data object.")
+        hashing_data._inplace_subset_obs(~idx)        
+
     counts_log10 = np.log10(hashing_data.obs["counts"].values.reshape(-1, 1))
     kmeans = KMeans(n_clusters=2, random_state=random_state).fit(counts_log10)
     signal = 0 if kmeans.cluster_centers_[0] > kmeans.cluster_centers_[1] else 1
