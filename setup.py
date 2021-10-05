@@ -26,7 +26,7 @@ setup(
     description="demuxEM is the demultiplexing module of Pegasus",
     long_description=long_description,
     url="https://github.com/klarman-cell-observatory/demuxEM",
-    author="Yiming Yang, Joshua Gould and Bo Li",
+    author="Yiming Yang, Asma Bankapur, Joshua Gould and Bo Li",
     author_email="cumulus-support@googlegroups.com",
     classifiers=[  # https://pypi.python.org/pypi?%3Aaction=list_classifiers
         "Development Status :: 4 - Beta",
@@ -46,6 +46,6 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     setup_requires = ["setuptools_scm"],
-    python_requires="~=3.5",
+    python_requires="~=3.7",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
 )

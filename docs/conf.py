@@ -25,13 +25,13 @@ import demuxEM
 project = "demuxEM"
 copyright = "2020 - 2021 The Broad Institute, Inc. and The General Hospital Corporation. All rights reserved."
 author = (
-    "Bo Li, Yiming Yang, and Josh Gould"
+    "Bo Li, Yiming Yang, Asma Bankapur and Josh Gould"
 )
 
 # The short X.Y version
 version = "0.1"
 # The full version, including alpha/beta/rc tags
-release = "0.1.6"
+release = "0.1.7"
 
 
 # -- General configuration ---------------------------------------------------

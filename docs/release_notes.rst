@@ -1,3 +1,8 @@
+Version 0.1.7 `October 05, 2021`
+------------------------------
+
+Filter cell barcodes with 0 hashtag counts in estimate_background_probs
+
 Version 0.1.6 `May 28, 2021`
 ------------------------------
 
