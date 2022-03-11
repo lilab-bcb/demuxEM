@@ -25,7 +25,7 @@ setup(
     zip_safe=False,
     description="demuxEM is the demultiplexing module of Pegasus",
     long_description=long_description,
-    url="https://github.com/klarman-cell-observatory/demuxEM",
+    url="https://github.com/lilab-bcb/demuxEM",
     author="Yiming Yang, Asma Bankapur, Joshua Gould and Bo Li",
     author_email="cumulus-support@googlegroups.com",
     classifiers=[  # https://pypi.python.org/pypi?%3Aaction=list_classifiers

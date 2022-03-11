@@ -23,7 +23,7 @@ import demuxEM
 # -- Project information -----------------------------------------------------
 
 project = "demuxEM"
-copyright = "2020 - 2021 The Broad Institute, Inc. and The General Hospital Corporation. All rights reserved."
+copyright = "2020 - 2022 Genentech Inc. and the Broad Institute, Inc. All rights reserved."
 author = (
     "Bo Li, Yiming Yang, Asma Bankapur and Josh Gould"
 )
@@ -130,7 +130,7 @@ html_static_path = ["_static"]
 
 html_context = dict(
     display_github=True,  # Integrate GitHub
-    github_user="klarman-cell-observatory",  # Username
+    github_user="lilab-bcb",  # Username
     github_repo="demuxEM",  # Repo name
     github_version="master",  # Version
     conf_py_path="/docs/",  # Path in the checkout to the docs root

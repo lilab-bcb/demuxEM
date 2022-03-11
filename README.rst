@@ -16,8 +16,8 @@ demuxEM for demultiplexing cell/nucleus hashing single-cell data
 .. |Docs| image:: https://readthedocs.org/projects/demuxem/badge/?version=latest
    :target: https://demuxEM.readthedocs.io
 
-.. |License| image:: https://img.shields.io/github/license/klarman-cell-observatory/demuxEM
-   :target: https://github.com/klarman-cell-observatory/demuxEM/blob/master/LICENSE
+.. |License| image:: https://img.shields.io/github/license/lilab-bcb/demuxEM
+   :target: https://github.com/lilab-bcb/demuxEM/blob/master/LICENSE
 
 demuxEM is the demultiplexing module of Pegasus.
 
