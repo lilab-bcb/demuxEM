@@ -5,3 +5,4 @@ dist/
 demuxEM.egg-info/
 docs/api/*.rst
 docs/_build
+demuxEM/version.py
