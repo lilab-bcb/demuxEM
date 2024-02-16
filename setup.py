@@ -11,11 +11,10 @@ with open(os.path.join(here, "README.rst"), encoding="utf-8") as f:
 requires = [
     "docopt",
     "numpy",
-    "pandas",
+    "pandas>=1.5.0",
     "scipy",
     "scikit-learn",
     "seaborn",
-    "importlib-metadata >=0.7; python_version < '3.8'",
     "pegasusio >=0.2.12",
 ]
 
@@ -46,6 +45,6 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     setup_requires = ["setuptools_scm"],
-    python_requires="~=3.7",
+    python_requires="~=3.8",
     entry_points={"console_scripts": ["demuxEM=demuxEM.__main__:main"]},
 )

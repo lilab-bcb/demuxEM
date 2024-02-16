@@ -91,5 +91,5 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     # output summary statistics
     print("\nSummary statistics:")
     print("total\t{}".format(rna_data.shape[0]))
-    for name, value in rna_data.obs["demux_type"].value_counts().iteritems():
+    for name, value in rna_data.obs["demux_type"].value_counts().items():
         print("{}\t{}".format(name, value))
