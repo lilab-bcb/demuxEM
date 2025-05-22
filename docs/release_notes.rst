@@ -1,3 +1,8 @@
+Version 0.1.8 `May 22, 2025`
+-----------------------------
+
+Support HTO count matrix input in hdf5 format.
+
 Version 0.1.7 `October 05, 2021`
 ------------------------------
 

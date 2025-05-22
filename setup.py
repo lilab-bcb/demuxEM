@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-from setuptools.extension import Extension
 from codecs import open
 import os
 
@@ -15,7 +14,7 @@ requires = [
     "scipy",
     "scikit-learn",
     "seaborn",
-    "pegasusio >=0.2.12",
+    "pegasusio>=0.10.0",
 ]
 
 setup(

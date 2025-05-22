@@ -23,7 +23,7 @@ import demuxEM
 # -- Project information -----------------------------------------------------
 
 project = "demuxEM"
-copyright = "2020 - 2022 Genentech Inc. and the Broad Institute, Inc. All rights reserved."
+copyright = "2020 - 2025 Genentech Inc. and the Broad Institute, Inc. All rights reserved."
 author = (
     "Bo Li, Yiming Yang, Asma Bankapur and Josh Gould"
 )
@@ -31,7 +31,7 @@ author = (
 # The short X.Y version
 version = "0.1"
 # The full version, including alpha/beta/rc tags
-release = "0.1.7"
+release = "0.1.8"
 
 
 # -- General configuration ---------------------------------------------------
