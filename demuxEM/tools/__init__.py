@@ -3,6 +3,7 @@ from .plot import (
     plot_hto_hist,
     plot_rna_hist,
     plot_bar,
+    write_background_prob_csv,
     plot_gene_violin,
     plot_heatmap,
     plot_dataframe_bar,

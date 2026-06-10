@@ -98,6 +98,16 @@ def plot_bar(heights: List[float], tick_labels: List[str], xlabel: str, ylabel: 
     plt.close()
 
 
+def write_background_prob_csv(heights: List[float], sample_ids: List[str], out_file: str) -> None:
+    df = pd.DataFrame(
+        {
+            "sample_id": sample_ids,
+            "background_probability": heights,
+        }
+    )
+    df.to_csv(out_file, index=False)
+
+
 def plot_gene_violin(
     data: UnimodalData,
     gene_name: str,

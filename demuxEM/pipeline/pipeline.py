@@ -7,6 +7,8 @@ logger = logging.getLogger(__name__)
 from demuxEM.tools import *
 
 
+MAX_BACKGROUND_PROBABILITY_PLOT_FEATURES = 32
+
 
 def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
     # load input rna data
@@ -52,13 +54,26 @@ def run_pipeline(input_rna_file, input_hto_file, output_name, **kwargs):
         plot_hto_hist(
             hashing_data, "hto_type", output_name + ".ambient_hashtag.hist.pdf", alpha=1.0
         )
-        plot_bar(
+
+        write_background_prob_csv(
             hashing_data.uns["background_probs"],
             hashing_data.var_names,
-            "Sample ID",
-            "Background probability",
-            output_name + ".background_probabilities.bar.pdf",
+            output_name + ".background_probabilities.csv",
         )
+        if len(hashing_data.var_names) <= MAX_BACKGROUND_PROBABILITY_PLOT_FEATURES:
+            plot_bar(
+                hashing_data.uns["background_probs"],
+                hashing_data.var_names,
+                "Sample ID",
+                "Background probability",
+                output_name + ".background_probabilities.bar.pdf",
+            )
+        else:
+            logger.info(
+                "Skipped background probability bar plot because %d hashtags/guides exceed the limit of %d.",
+                len(hashing_data.var_names),
+                MAX_BACKGROUND_PROBABILITY_PLOT_FEATURES,
+            )
         plot_hto_hist(
             hashing_data, "rna_type", output_name + ".real_content.hist.pdf", alpha=0.5
         )
